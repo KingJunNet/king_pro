@@ -49,3 +49,5 @@ img_car.add_img(img5)
 
 img_car_handler= ImgCarHandler(img_car)
 img_car_handler.handle()
+
+print '结束'
