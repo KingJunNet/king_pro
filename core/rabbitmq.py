@@ -5,7 +5,12 @@ import pika
 
 @singleton
 class MsgQueueServiceConfig:
-    def init(self,host='',user='',pwd=''):
+    def __init__(self):
+        self.host = ''
+        self.user = ''
+        self.pwd = ''
+
+    def init(self,host,user,pwd):
         self.host = host
         self.user = user
         self.pwd = pwd

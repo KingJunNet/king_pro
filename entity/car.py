@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import time
+import json
 from core.json_plus import JsonConvert
 from base import BaseEntity
 
@@ -42,8 +43,7 @@ class ImgCar(Car):
         self.num = num
         self.imgs = imgs
 
-    def crude(self,id='', topic='', catalog=0, publish_time=time.time(), catch_time=time.time()):
-        self.id=id
+    def crude(self, topic='', catalog=0, publish_time=time.time(), catch_time=time.time()):
         self.topic = topic
         self.catalog = catalog
         self.publish_time = publish_time
@@ -79,3 +79,26 @@ class ImgCar(Car):
 
        return img_car_dict
 
+    def __str__(self):
+        result = str(self.to_json())
+
+        return result
+
+    @staticmethod
+    def json_obj2entity(json_obj):
+        img_car = ImgCar()
+        img_car.crude(topic=json_obj['topic'], catalog=json_obj['catalog'], publish_time=json_obj['publish_time'],
+                      catch_time=json_obj['catch_time'])
+        imgs=json_obj['imgs']
+        for img_obj in imgs:
+            img = Img(no=img_obj['no'],url=img_obj['url'],path=img_obj['path'],description=img_obj['description'])
+            img_car.imgs.append(img)
+
+        return img_car
+
+    @staticmethod
+    def deserialize(json_content):
+        json_obj= json.loads(json_content)
+        img_car=ImgCar.json_obj2entity(json_obj)
+
+        return img_car

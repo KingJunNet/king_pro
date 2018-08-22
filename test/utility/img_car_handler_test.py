@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import time
-
 from core.file_plus import create_dir
 from entity.car import *
 from core.mongo_plus import *
@@ -30,7 +29,7 @@ mongo_conf.init(ip='localhost',port=50000,db_name='OldDriverDB',user='',pwd='')
 
 #构造图片福利
 img_car=ImgCar()
-img_car.crude(id='', topic='港媒：歼20跻身世界最先进喷气式战机 可媲美F-22', catalog=1, publish_time=time.time(), catch_time=time.time())
+img_car.crude(topic='港媒：歼20跻身世界最先进喷气式战机 可媲美F-22', catalog=1, publish_time=time.time(), catch_time=time.time())
 img1=Img()
 img1.crude("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534330777385&di=8964941d79e54f50dd9c6e4d98ac60c4&imgtype=0&src=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn19%2F266%2Fw640h426%2F20180515%2F87a4-hapkuvm3684064.jpg")
 img2=Img()
