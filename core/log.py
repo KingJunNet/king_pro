@@ -32,12 +32,14 @@ def logattribute(message=''):
 def actionlog(action=''):
     def _log(func):
         def __log(*args, **kwargs):
-            print("%s | INFO | 开始%s" % (time.strftime(CONST_DEFAULT_TIME_FOMAT, time.localtime()), action))
+            begin_text="%s | INFO | 开始%s" % (time.strftime(CONST_DEFAULT_TIME_FOMAT, time.localtime()), action)
+            print begin_text.decode('UTF-8')
             ret = func(*args, **kwargs)
-            print("%s | INFO | %s结束" % (time.strftime(CONST_DEFAULT_TIME_FOMAT,time.localtime()), action))
+            end_text="%s | INFO | %s结束" % (time.strftime(CONST_DEFAULT_TIME_FOMAT,time.localtime()), action)
+            print end_text.decode('UTF-8')
             return ret
         return __log
     return _log
 
 def log_info(message=''):
-    print("%s | INFO | %s" % (time.strftime(CONST_DEFAULT_TIME_FOMAT, time.localtime()), message))
+    print(("%s | INFO | %s" % (time.strftime(CONST_DEFAULT_TIME_FOMAT, time.localtime()), message)).decode('UTF-8'))

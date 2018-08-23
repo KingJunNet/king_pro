@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
 import pika
 import sys
+
 current_working_directory = "E:\python_project\king.car"
 sys.path.append(current_working_directory)
 from entity.car import ImgCar
 from core.rabbitmq import MsgQueueServiceConfig
 import core.rabbitmq
 from core.log import *
+from tests.a_test import *
+from tests.entity.car_test import build_img_car
+# from test.entity.car_test import build_img_car
 
 class ImgCarMsgListener:
     """
@@ -34,8 +38,7 @@ class ImgCarMsgListener:
         log_info("收到消息:%s"%(body))
         #字符串转换为对象
         img_car=ImgCar.deserialize(body)
-        log_info("反序列化结果:%s" % (str(img_car)))
-        # self.msg_receive_event_handler(img_car)
+        self.msg_receive_event_handler(img_car)
 
 def img_car_msg_listenerd():
     username = 'guest'  # 指定远程rabbitmq的用户名密码
@@ -52,6 +55,8 @@ def img_car_msg_listenerd():
     print('[消费者] waiting for msg .')
     chan.start_consuming()  # 开始循环取消息
 
-# img_car_msg_listenerd()
+img_car=build_img_car()
+print 'king%s'%(img_car.num)
+img_car_msg_listenerd()
 
 

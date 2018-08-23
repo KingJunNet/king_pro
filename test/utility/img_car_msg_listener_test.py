@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 import time
+
+from core.log import log_info
 from entity.car import *
 from utility.img_car_msg_listener import ImgCarMsgListener
 from core.rabbitmq import *
 
 def handle_img_car(img_car=ImgCar()):
-    print str(img_car)
+    log_info("反序列化结果:%s" % (str(img_car)))
 
 #初始化
 msg_quene_conf=MsgQueueServiceConfig()

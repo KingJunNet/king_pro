@@ -38,10 +38,10 @@ class ImgCar(Car):
     图片福利
         """
 
-    def __init__(self, id='', topic='', catalog=0, publish_time=time.time(), catch_time=time.time(), num=0, imgs=[]):
+    def __init__(self, id='', topic='', catalog=0, publish_time=time.time(), catch_time=time.time(), num=0, imgs=None):
         Car.__init__(self,id, topic, catalog, publish_time, catch_time)
         self.num = num
-        self.imgs = imgs
+        self.imgs = imgs or []
 
     def crude(self, topic='', catalog=0, publish_time=time.time(), catch_time=time.time()):
         self.topic = topic
@@ -68,8 +68,11 @@ class ImgCar(Car):
     def is_valid(self):
         return True
 
-    def to_json(self):
-       img_car_dict= JsonConvert.serialize_object(self, ['id','imgs'])
+    def to_json(self,is_include_id=False):
+       ignore_fields = ['imgs']
+       if not is_include_id:
+           ignore_fields.append('id')
+       img_car_dict= JsonConvert.serialize_object(self, ignore_fields)
        imgs_dict=[]
        for img in self.imgs:
            img_dict= JsonConvert.serialize_object(img)
@@ -80,8 +83,8 @@ class ImgCar(Car):
        return img_car_dict
 
     def __str__(self):
-        result = str(self.to_json())
-
+        result =json.dumps(self.to_json(is_include_id=True),encoding='UTF-8',ensure_ascii=False)
+        result=result.encode('UTF-8')
         return result
 
     @staticmethod

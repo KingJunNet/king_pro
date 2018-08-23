@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+import sys
+current_working_directory = "E:\python_project\king.car"
+sys.path.append(current_working_directory)
 import time
 from entity.car import *
 from utility.img_car_msg_sender import ImgCarMsgSender
