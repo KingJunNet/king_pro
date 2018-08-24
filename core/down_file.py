@@ -52,10 +52,10 @@ def download_img_file(img_url,file_path):
 		# img_url="http://p.vxotu.com/u/20171107/09214533.jpg"
 		request = requests.get(img_url, headers=request_header)
 		img_content = request.content
-		file_path = file_path.decode('utf-8', 'ignore').encode('gbk')
-		fp = open(file_path, 'wb')
+		file_path_ch = file_path.decode('utf-8', 'ignore').encode('gbk')
+		fp = open(file_path_ch, 'wb')
 		fp.write(img_content)
-		print img_content
+		# print img_content
 		fp.close()
 		log_info("下载文件:%s"%(file_path))
 	except Exception, e:

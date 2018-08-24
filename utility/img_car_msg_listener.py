@@ -52,8 +52,8 @@ def img_car_msg_listenerd():
     print('[消费者] waiting for msg .')
     chan.start_consuming()  # 开始循环取消息
 
-img_car=build_img_car()
-print 'king%s'%(img_car.num)
-img_car_msg_listenerd()
+# img_car=build_img_car()
+# print 'king%s'%(img_car.num)
+# img_car_msg_listenerd()
 
 

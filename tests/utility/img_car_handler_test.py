@@ -9,7 +9,7 @@ from utility.img_file import *
 
 def create_catalog_dir():
     """
-                           创建目录
+                           创建栏目目录
                            :param dir:  目录地址
                            :return:void
                         """
@@ -17,8 +17,6 @@ def create_catalog_dir():
         img_file_rule=ImgFileRule()
         catalog_dir = img_file_rule.build_catalog_dir(catalog=catalog_name)
         create_dir(catalog_dir)
-
-
 
 #初始化
 create_catalog_dir()

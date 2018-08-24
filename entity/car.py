@@ -90,11 +90,11 @@ class ImgCar(Car):
     @staticmethod
     def json_obj2entity(json_obj):
         img_car = ImgCar()
-        img_car.crude(topic=json_obj['topic'], catalog=json_obj['catalog'], publish_time=json_obj['publish_time'],
+        img_car.crude(topic=json_obj['topic'].encode('UTF-8'), catalog=json_obj['catalog'], publish_time=json_obj['publish_time'],
                       catch_time=json_obj['catch_time'])
         imgs=json_obj['imgs']
         for img_obj in imgs:
-            img = Img(no=img_obj['no'],url=img_obj['url'],path=img_obj['path'],description=img_obj['description'])
+            img = Img(no=img_obj['no'],url=img_obj['url'].encode('UTF-8'),path=img_obj['path'].encode('UTF-8'),description=img_obj['description'].encode('UTF-8'))
             img_car.imgs.append(img)
 
         return img_car
