@@ -1,16 +1,13 @@
 # -*- coding: utf-8 -*-
 import pika
 import sys
-
 current_working_directory = "E:\python_project\king.car"
 sys.path.append(current_working_directory)
 from entity.car import ImgCar
 from core.rabbitmq import MsgQueueServiceConfig
 import core.rabbitmq
 from core.log import *
-from tests.a_test import *
 from tests.entity.car_test import build_img_car
-# from test.entity.car_test import build_img_car
 
 class ImgCarMsgListener:
     """
