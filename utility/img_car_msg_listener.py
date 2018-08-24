@@ -32,6 +32,7 @@ class ImgCarMsgListener:
 
     def on_msg_receive(self,channel, method, properties, body):
         #记录日志
+        log_info("=======================================================" )
         log_info("收到消息:%s"%(body))
         #字符串转换为对象
         img_car=ImgCar.deserialize(body)
